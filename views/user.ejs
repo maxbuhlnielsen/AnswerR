@@ -1,0 +1,153 @@
+<%- include("partials/header"); -%>
+<main class="main container">
+  <div class="row">
+    <div class="col--sm">
+      <div class="user__info background border">
+        <h3 class="user__name">USER <%= user.username %></h3>
+        <p class="user__status">
+          <% if (user.status === 0) { %>
+            Member
+          <% } else if (user.status === 1) { %>
+            Moderator
+          <% } else if (user.status === 2) { %>
+            Admin
+          <% } else { %>
+            Member
+          <% } %>
+        </p>
+        <small class="user__date">Joined on <%= user.dateString %></small>
+        <p class="user__bio">
+          <% if (user.bio != null) { %>
+            <%= user.bio %>
+          <% } else { %>
+            <% if (isProfile) { %>
+              You have not added a bio yet.
+            <% } else { %>
+              This user has not added a bio yet.
+            <% } %>
+          <% } %>
+        </p>
+        <% if (isProfile) { %>
+          <p class="user__stat">Questions: <%= questions.length %></p>
+        <% } else { %>
+          <p class="user__stat">Questions: <%= questions.length - user.anonymousCount %></p>
+        <% } %>
+        <p class="user__stat">Answers: <%= answers.length %></p>
+        <% if (isProfile && (user.status === 1 || user.status === 2)) { %>
+        <a href="/dashboard">Moderator dashboard</a>
+        <% } %>
+      </div>
+      <% if (isProfile) { %>
+        <div class="profile__options">
+          <a class="profile__logout" href="/logout">Log out</a>
+          <div class="profile__bio">
+            <h3 class="profile__bio__title">Update your bio:</h3>
+            <form action="/users/<%= user._id %>/bio/update" method="POST">
+              <textarea name="bio" rows="5" cols="80" placeholder="Write something about yourself..."></textarea>
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+      <% } %>
+    </div>
+    <div class="col--lg">
+      <div class="user__main">
+        <% if (isProfile) { %>
+          <h3 class="user__main__title">Questions (<%= questions.length %>)</h3>
+        <% } else { %>
+          <h3 class="user__main__title">Questions (<%= questions.length - user.anonymousCount %>)</h3>
+        <% } %>
+        <div class="user__main__container background border">
+          <% if ((!isProfile && questions.length - user.anonymousCount === 0) || (isProfile && questions.length === 0)) { %>
+            <div class="empty">
+              <i class="fas fa-moon empty__icon"></i>
+              <br>
+              <span class="empty__msg">Nothing to display.</span>
+            </div>
+          <% } else { %>
+            <% questions.forEach(question => { %>
+              <% if (!question.isAnonymous || isProfile) { %>
+                <div class="preview">
+                  <div class="preview__meta">
+                    <p class="preview__answers">
+                      <% if (question.answerCount == 1) { %>
+                        <span class="preview__answers--large">1</span>
+                        <br>
+                        answer
+                      <% } else { %>
+                        <span class="preview__answers--large"><%= question.answerCount %></span>
+                        <br>
+                        answers
+                      <% } %>
+                    </p>
+                  </div>
+                  <div class="preview__main">
+                    <a href="/questions/<%= question._id %>" class="preview__title"><%= question.title %></a>
+                    <br>
+                    <% question.tags.forEach(tag => { %>
+                      <a href="#" class="tag"><%= tag %></a>
+                    <% }); %>
+                  </div>
+                  <div class="preview__time">
+                    <p>
+                      <i class="far fa-clock preview__time__icon"></i>
+                      <%= question.deltaTimeString %>
+                    </p>
+                  </div>
+                </div>
+              <% } %>
+            <% }); %>
+          <% } %>
+        </div>
+        <h3 class="user__main__title">Answers (<%= answers.length %>)</h3>
+        <div class="user__main__container background border">
+          <% if (answers.length === 0) { %>
+            <div class="empty">
+              <i class="fas fa-moon empty__icon"></i>
+              <br>
+              <span class="empty__msg">Nothing to display.</span>
+            </div>
+          <% } else { %>
+            <% answers.forEach(answer => { %>
+              <div class="preview">
+                <div class="preview__meta">
+                  <p class="preview__answers">
+                    <% if (answer.question.answerCount == 1) { %>
+                      <span class="preview__answers--large">1</span>
+                      <br>
+                      answer
+                    <% } else { %>
+                      <span class="preview__answers--large"><%= answer.question.answerCount %></span>
+                      <br>
+                      answers
+                    <% } %>
+                  </p>
+                </div>
+                <div class="preview__main">
+                  <a href="/questions/<%= answer.question._id %>" class="preview__title"><%= answer.question.title %></a>
+                  <br>
+                  <% answer.question.tags.forEach(tag => { %>
+                    <a href="#" class="tag"><%= tag %></a>
+                  <% }); %>
+                  <br>
+                  <p class="preview__ans">
+                    <%= user.username %>:
+                    <span class="preview__ans__primary"><%= answer.answer.rating %></span>
+                    <%= answer.answer.body.slice(0, 50) + "..." %>
+                  </p>
+                </div>
+                <div class="preview__time">
+                  <p>
+                    <i class="far fa-clock preview__time__icon"></i>
+                    <%= answer.question.deltaTimeString %>
+                  </p>
+                </div>
+              </div>
+            <% }); %>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<%- include("partials/footer"); -%>

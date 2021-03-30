@@ -1,0 +1,52 @@
+<%- include("partials/header"); -%>
+<main class="main container">
+  <div class="row">
+    <div class="col--sm background border">
+      <div class="dashboard">
+        <h3 class="dashboard__title">Moderator dashboard</h3>
+        <p class="dashboard__para">These questions have been reported the most by users. However, only remove them after checking through them thoroughly.</p>
+      </div>
+    </div>
+    <div class="col--lg background border">
+      <% if (questions.length > 0) { %>
+        <% questions.forEach(question => { %>
+          <div class="preview">
+            <div class="preview__meta">
+              <p class="preview__answers preview__answers--reports">
+                <% if (question.reportCount == 1) { %>
+                  <span class="preview__answers--large">1</span>
+                  <br>
+                  report
+                <% } else { %>
+                  <span class="preview__answers--large"><%= question.reportCount %></span>
+                  <br>
+                  reports
+                <% } %>
+              </p>
+            </div>
+            <div class="preview__main">
+              <a href="/questions/<%= question._id %>" class="preview__title"><%= question.title %></a>
+              <br>
+              <% question.tags.forEach(tag => { %>
+                <a href="#" class="tag"><%= tag %></a>
+              <% }); %>
+            </div>
+            <div class="preview__time">
+              <p>
+                <i class="far fa-clock preview__time__icon"></i>
+                <%= question.deltaTimeString %>
+              </p>
+            </div>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <div class="empty">
+          <i class="fas fa-moon empty__icon"></i>
+          <br>
+          <span class="empty__msg">Nothing to display.</span>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</main>
+<%- include("partials/footer"); -%>

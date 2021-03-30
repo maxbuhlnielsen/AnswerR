@@ -1,0 +1,65 @@
+<%- include("partials/header"); -%>
+<main class="main container">
+  <div class="row">
+    <div class="col--sm background border">
+      <div class="filter">
+        <h3 class="filter__title">Filter your search:</h3>
+        <form action="/" method="GET">
+        <p class="filter__time__subtitle">Only show questions from:</p>
+          <input type="radio" id="filter__today" name="time" value="today">
+          <label for="filter__today">Today</label><br>
+          <input type="radio" id="filter__week" name="time" value="week">
+          <label for="filter__week">Last Week</label><br>
+          <input type="radio" id="filter__month" name="time" value="month">
+          <label for="filter__month">Last Month</label><br>
+          <input type="radio" id="filter__year" name="time" value="year">
+          <label for="filter__year">Last Year</label><br>
+          <input type="radio" id="filter__all" name="time" value="all">
+          <label for="filter__all">All Time</label><br>
+          <input class="filter__submit" type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+    <div class="col--lg background border">
+      <% if (questions.length > 0) { %>
+        <% questions.forEach(question => { %>
+          <div class="preview">
+            <div class="preview__meta">
+              <p class="preview__answers">
+                <% if (question.answerCount == 1) { %>
+                  <span class="preview__answers--large">1</span>
+                  <br>
+                  answer
+                <% } else { %>
+                  <span class="preview__answers--large"><%= question.answerCount %></span>
+                  <br>
+                  answers
+                <% } %>
+              </p>
+            </div>
+            <div class="preview__main">
+              <a href="/questions/<%= question._id %>" class="preview__title"><%= question.title %></a>
+              <br>
+              <% question.tags.forEach(tag => { %>
+                <a href="#" class="tag"><%= tag %></a>
+              <% }); %>
+            </div>
+            <div class="preview__time">
+              <p>
+                <i class="far fa-clock preview__time__icon"></i>
+                <%= question.deltaTimeString %>
+              </p>
+            </div>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <div class="empty">
+          <i class="fas fa-moon empty__icon"></i>
+          <br>
+          <span class="empty__msg">Nothing to display.</span>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</main>
+<%- include("partials/footer"); -%>

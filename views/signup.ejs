@@ -1,0 +1,15 @@
+<%- include("partials/header"); -%>
+<main class="main container">
+  <div class="auth border background">
+    <h1 class="auth__title">Sign up</h1>
+    <form action="/signup" method="POST">
+      <label for="signup__username">Username</label>
+      <input type="text" name="username" id="signup__username" class="auth__input" placeholder="Username">
+      <label for="signup__password">Password</label>
+      <input type="password" name="password" id="signup__username" class="auth__input" placeholder="Password">
+      <input type="submit" value="Submit" class="auth__button">
+    </form>
+    <p class="auth__option">Already have an account? <a href="/login">Log in</a></p>
+  </div>
+</main>
+<%- include("partials/footer"); -%>

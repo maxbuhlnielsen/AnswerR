@@ -1,0 +1,41 @@
+<%- include("partials/header"); -%>
+<main class="main container">
+  <div class="row">
+    <div class="col--sm border background">
+      <div class="guide">
+        <h3 class="guide__title">Make sure to include:</h3>
+        <ul class="guide__list">
+          <li class="guide__item">A concise title that briefly describes your question</li>
+          <li class="guide__item">Comma-separated tags so that people can find your question more easily</li>
+          <li class="guide__item">A full description of your question in the body</li>
+        </ul>
+        <p class="guide__option">For more information on how to best write a question, visit our <a href="#">guide</a>.</p>
+      </div>
+    </div>
+    <div class="col--lg border background">
+      <div class="compose">
+        <h1 class="compose__heading">Ask a question</h1>
+        <form action="/compose" method="POST">
+          <div class="compose__meta">
+            <div class="compose__title">
+              <label for="compose__title">Title</label>
+              <input type="text" name="title" id="compose__title" placeholder="Title">
+            </div>
+            <div class="compose__tags">
+              <label for="compose__tags">Tags</label>
+              <input type="text" name="tags" id="compose__tags" placeholder="Tags">
+            </div>
+          </div>
+          <div class="compose__main">
+            <label for="compose__body">Body</label>
+            <textarea name="body" id="compose__body" rows="8" cols="80" placeholder="Write something..."></textarea>
+          </div>
+          <input type="checkbox" name="isAnonymous" id="compose__anonymous">
+          <label for="compose__anonymous">Make this question anonymous</label><br>
+          <input type="submit" value="Submit" class="compose__submit">
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+<%- include("partials/footer"); -%>

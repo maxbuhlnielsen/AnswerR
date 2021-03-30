@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>About | AnswerR</title>
+    <meta name="description" content="An internet safety online forum website">
+    <meta name="author" content="Max Buhl-Nielsen">
+    <link rel="icon" type="image/png" href="/img/logo.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/misc.css">
+  </head>
+  <body>
+    <main class="main fade-in">
+      <div class="main__container">
+        <div class="main__content">
+          <h1 class="main__title">Making the web safer</h1>
+          <p class="main__paragraph">AnswerR is a free web application which provides both children and adults an online platform for asking questions surrounding the field of internet safety. Scroll down to learn more.</p>
+          <a class="main__button" href="/">Launch the app</a>
+        </div>
+      </div>
+    </main>
+    <section class="section fade-in">
+      <div class="section__content">
+        <img class="section__image" src="/img/section_one.jpg" alt="phone">
+        <div class="section__text">
+          <h3 class="section__title">Ask anonymously</h3>
+          <p class="section__paragraph">All users have the option to post a question anonymously if they don’t want to display their name publically. All your user data is protected with encryption.</p>
+        </div>
+      </div>
+    </section>
+    <hr class="section__separation fade-in">
+    <section class="section fade-in">
+      <div class="section__content">
+        <div class="section__text">
+          <h3 class="section__title">Receive approved answers</h3>
+          <p class="section__paragraph">Users can upvote or downvote answers which they believe are useful or not useful. The most upvoted answers rise to the top, the least useful go the bottom. This ensures that users receive the best answers to their questions agreed by the general public.</p>
+        </div>
+        <img class="section__image" src="/img/section_two.jpg" alt="phone">
+      </div>
+    </section>
+    <hr class="section__separation fade-in">
+    <section class="section fade-in">
+      <div class="section__content">
+        <img class="section__image" src="/img/section_three.jpg" alt="phone">
+        <div class="section__text">
+          <h3 class="section__title">Trusted moderators</h3>
+          <p class="section__paragraph">We have a team of trusted professionals who moderate any offensive or sensitive content posted on our site. If you come across a question which could be potentially offensive to certain groups of people, simply report it to alert our moderators who can then remove it.</p>
+        </div>
+      </div>
+    </section>
+    <div class="display">
+      <div class="display__box display__box--one fade-in">
+        <h3 class="display__box__title">Free for everyone</h3>
+      </div>
+      <div class="display__box display__box--two fade-in">
+        <h3 class="display__box__title">Frequent updates</h3>
+      </div>
+      <div class="display__box display__box--three fade-in">
+        <h3 class="display__box__title">Cross-platform</h3>
+      </div>
+    </div>
+    <div class="contact" id="contact">
+      <div class="contact__container">
+        <h3 class="contact__title fade-in">Contact us</h3>
+        <p class="contact__paragraph fade-in">Feel free to contact our team using any of the information below, or by submitting a feedback form.</p>
+        <div class="contact__flex">
+          <div class="contact__content contact__form fade-in">
+            <form action="/about/feedback" method="POST">
+              <div class="feedback__meta">
+                <div class="feedback__meta__obj">
+                  <label for="fName">First name</label>
+                  <input id="fName" type="text" name="fName" placeholder="e.g. John">
+                </div>
+                <div class="feedback__meta__obj">
+                  <label for="lName">Last name</label>
+                  <input id="lName" type="text" name="lName" placeholder="e.g. Appleseed">
+                </div>
+              </div>
+              <div class="feedback__email">
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" placeholder="e.g. johnappleseed@gmail.com">
+              </div>
+              <div class="feedback__main">
+                <label for="body">Feedback</label>
+                <textarea name="body" id="body" cols="30" rows="8" placeholder="Write something..."></textarea>
+              </div>
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+          <div class="contact__content contact__info fade-in">
+            <div class="contact__method">
+              <i class="fas fa-phone"></i>
+              01732 455133
+            </div>
+            <div class="contact__method">
+              <div class="contact__address">
+                <i class="fas fa-address-card"></i>
+                <div class="contact__address__main">
+                  Sevenoaks School<br>Sevenoaks, Kent<br>TN13 1HU
+                </div>
+              </div>
+            </div>
+            <div class="contact__method">
+              <i class="fas fa-envelope"></i>
+              admin@sevenoaksschool.org
+            </div>
+            <div class="contact__method">
+              <i class="fab fa-facebook"></i>
+              @SevenoaksSchoolUK
+            </div>
+            <div class="contact__method">
+              <i class="fab fa-twitter"></i>
+              @SevenoaksSchool
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer fade-in">
+      <div class="links">
+        <div class="links__container">
+          <div class="links__col">
+            <h5 class="links__title">Project</h5>
+            <ul class="links__list">
+              <li class="links__item"><a class="links__link" href="#">Overview</a></li>
+              <li class="links__item"><a class="links__link" href="https://github.com/maxbuhlnielsen/forum">GitHub Project</a></li>
+            </ul>
+          </div>
+          <div class="links__col">
+            <h5 class="links__title">Application</h5>
+            <ul class="links__list">
+              <li class="links__item"><a class="links__link" href="/">Home</a></li>
+              <li class="links__item"><a class="links__link" href="/login">Log in</a></li>
+              <li class="links__item"><a class="links__link" href="/signup">Sign up</a></li>
+              <li class="links__item"><a class="links__link" href="/compose">Compose</a></li>
+              <li class="links__item"><a class="links__link" href="/profile">Profile</a></li>
+            </ul>
+          </div>
+          <div class="links__col">
+            <h5 class="links__title">Company</h5>
+            <ul class="links__list">
+              <li class="links__item"><a class="links__link" href="/about">About</a></li>
+              <li class="links__item"><a class="links__link" href="/about#contact">Contact</a></li>
+              <li class="links__item"><a class="links__link" href="/about#contact">Feedback</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        © Max Buhl-Nielsen 2020-2021
+      </div>
+    </footer>
+    <script> </script>
+    <script>
+
+    const faders = document.querySelectorAll(".fade-in");
+
+    const appearOptions = {
+      threshold: 0.75
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(
+      entries,
+      appearOnScroll
+    ) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          return;
+        } else {
+          entry.target.classList.add("appear");
+          appearOnScroll.unobserve(entry.target);
+        }
+      });
+    },
+    appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+
+    </script>
+  </body>
+</html>
